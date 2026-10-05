@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+ <html lang="en"> 
+<head> 
+    <meta charset="UTF-8">
+     <title>Number Checker</title>
+     <style> body { font-family: Georgia, serif; background: #08e464; color: #2c2c2c; max-width: 560px; margin: 40px auto; padding: 0 20px; line-height: 1.5; } h1 { font-size: 1.6rem; font-weight: normal; border-bottom: 2px solid #2c2c2c; padding-bottom: 8px; } label { display: block; font-size: 0.85rem; text-transform: uppercase; color: #555; margin-bottom: 6px; } input[type="number"] { width: 100%; padding: 10px; font-size: 1.1rem; border: 1px solid #aaa; border-radius: 3px; box-sizing: border-box; } button { font-family: inherit; padding: 6px 12px; margin: 4px 4px 4px 0; background: #e8e3d8;
+
+border: 1px solid #d34c16; border-radius: 3px; cursor: pointer; } #runBtn { width: 100%; padding: 10px; background: #3a6ea5; color: #fff; border: none; font-size: 1rem; margin-top: 8px; } #runBtn:hover { background: #2d5a8a; } #output { margin-top: 24px; padding: 16px; background: #fff; border: 1px solid #ccc; border-left: 4px solid #3a6ea5; border-radius: 3px; min-height: 60px; } </style> 
+    </head> 
+    <body>
+        <label for="numInput">Enter a number</label> 
+        <input type="number" id="numInput" value="42" step="any"> 
+        <div> 
+            <button data-v="0">0</button>
+             <button data-v="7">7</button> 
+             <button data-v="-5">-5</button> 
+             <button data-v="100">100</button> 
+             <button data-v="3.14">3.14</button>
+             </div> 
+             <button id="runBtn">Check Number</button>
+              <div id="output"> 
+                Waiting for input. 
+            </div>
+            <script> (function () { var numInput = document.getElementById('numInput'); var runBtn = document.getElementById('runBtn'); var output = document.getElementById('output'); var presets = document.querySelectorAll('button[data-v]'); function runCheck() { var raw = numInput.value.trim(); var n = Number(raw); var result; if (raw === '' || isNaN(n)) { result = 'That is not a valid number.'; } else if (n === 0) {
+
+result = 'Zero — neither positive nor negative.'; } else if (n < 0) { result = 'Negative number.'; } else if (n > 1000) { result = 'Large positive number (greater than 1000).'; } else if (n === 100) { result = 'Exactly one hundred.'; } else if (n < 100) { result = 'Small positive number (1 to 99).'; } else { result = 'Positive number (101 to 1000).'; } output.textContent = result; } runBtn.addEventListener('click', runCheck); numInput.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); runCheck(); } }); for (var i = 0; i < presets.length; i++) { presets[i].addEventListener('click', function () { numInput.value = this.getAttribute('data-v'); runCheck(); }); } runCheck(); })(); </script>
+            </body>
+         <h1>Number Checker</h1>
+          <!-- We'll add the input and button here -->
+         </body>
+          </html>                                                                                  
